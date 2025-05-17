@@ -6,7 +6,7 @@
 from scrapy.item import Item, Field
 
 
-class Article(Item):
+class ArticleItem(Item):
     url = Field()
     title = Field()
     content = Field()

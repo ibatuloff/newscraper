@@ -28,7 +28,7 @@ ROBOTSTXT_OBEY = True
 # Configure a delay for requests for the same website (default: 0)
 # See https://docs.scrapy.org/en/latest/topics/settings.html#download-delay
 # See also autothrottle settings and docs
-#DOWNLOAD_DELAY = 3
+DOWNLOAD_DELAY = 3
 # The download delay setting will honor only one of:
 #CONCURRENT_REQUESTS_PER_DOMAIN = 16
 #CONCURRENT_REQUESTS_PER_IP = 16
@@ -99,6 +99,10 @@ FEED_EXPORT_ENCODING = "utf-8"
 # Database settings
 
 DATABASE_URL = os.getenv("DATABASE_URL")
-
-
-
+DB_NAME = os.getenv("DB_NAME")
+DB_USER = os.getenv("DB_USER")
+DB_PASSWORD = os.getenv("DB_PASSWORD")
+HOST1 = os.getenv("HOST1")
+HOST2 = os.getenv("HOST2")
+DB_PORT = os.getenv("DB_PORT")
+CA_PATH = "./certificate/RootCA.pem"
