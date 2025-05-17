@@ -1,0 +1,7 @@
+scrapy
+# asyncpg
+# fastapi
+# pydantic
+# uvicorn
+dateparser
+psycopg2-binary
