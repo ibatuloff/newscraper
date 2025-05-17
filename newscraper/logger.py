@@ -1,12 +1,8 @@
 import logging
-import os
 
-if not os.path.exists("/app/logs"):
-    os.makedirs("/app/logs")
 
 logging.basicConfig(
     handlers=[
-        logging.FileHandler("/app/logs/app.log"),  
         logging.StreamHandler() 
     ],
     level=logging.INFO,
