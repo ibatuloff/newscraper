@@ -21,7 +21,6 @@ class AngaraSecuritySpider(BasicSpider):
         for card in response.css("div[class*='section-articles__content'] a[id^='bx']"):
             article_date = card.css("div[class*='section-event__date'] p::text").get()
             article_date = dateparser.parse(article_date, languages=['ru']).replace(tzinfo=timezone.utc)
-
             if article_date >= cutoff_date:  # статья "старше" чем  не будет собрана
                 article_link = card.attrib.get("href")
                 title = card.css("h5::text").get()
@@ -38,7 +37,6 @@ class AngaraSecuritySpider(BasicSpider):
         item['title'] = response.meta['title']
         item['url'] = response.url
         article_content = [text.strip() for text in response.xpath("//article//p[not(@*)]/text()").getall()]
-
         item['content'] = '\n'.join(article_content)
 
         yield item
