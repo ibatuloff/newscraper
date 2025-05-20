@@ -3,6 +3,28 @@ from scrapy.exceptions import DropItem
 from newscraper import settings
 from newscraper.logger import logger
 
+
+
+class DuplicateFilterPipeline:
+
+    def process_item(self, item, spider):
+        self.cur.execute(
+            """
+            SELECT 1
+            FROM publication
+            WHERE url = %s;
+            """, item.get('url')
+        )
+        if self.cur.fetchone():
+            # если такая статья уже есть в базе, то выкидываем её
+            logger.info(f"Статья {item.get('url')} уже есть в базе. Пропускаем.")
+            raise DropItem(f"Статья {item.get('url')} уже есть в базе.")
+        # если такой статьи в базе нет, то отправляем дальше по конвееру
+        return item
+
+
+
+
 class DatabasePipeline:
 
     @classmethod
@@ -37,7 +59,7 @@ class DatabasePipeline:
 
         insert_sql = """
             INSERT INTO publication (title, text, url, site_id, published_at)
-            VALUES (%s, %s, %s, %s, %s)
+            VALUES (%s, %s, %s, %s, %s);
         """
 
         self.cur.execute(upsert_sql, (

@@ -66,7 +66,7 @@ DOWNLOAD_DELAY = 3
 # Configure item pipelines
 # See https://docs.scrapy.org/en/latest/topics/item-pipeline.html
 ITEM_PIPELINES = {
-    # 'newscraper.pipelines.ValidationPipeline': 100,
+    'newscraper.pipelines.DuplicateFilterPipeline': 100,
     'newscraper.pipelines.DatabasePipeline': 200,
 }
 
