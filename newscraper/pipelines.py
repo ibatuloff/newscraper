@@ -8,6 +8,7 @@ class DatabasePipeline:
     @classmethod
     def from_crawler(cls, crawler):
         pipe = cls()
+ 
         pipe.conn_data = {
             'host': crawler.settings.get('HOST1'),
             'port': crawler.settings.get('DB_PORT'),

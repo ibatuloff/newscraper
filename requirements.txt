@@ -82,6 +82,8 @@ pyopenssl==25.0.0
     # via scrapy
 python-dateutil==2.9.0.post0
     # via dateparser
+python-dotenv==1.1.0
+    # via -r requirements.in
 pytz==2025.2
     # via dateparser
 queuelib==1.8.0
