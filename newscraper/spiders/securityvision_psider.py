@@ -5,6 +5,7 @@ import re
 from datetime import datetime, timedelta, timezone
 import dateparser
 from scrapy import Request
+import html
 
 class SecurityVesionSpider(BasicSpider):
     name = 'securityvision'
@@ -22,7 +23,7 @@ class SecurityVesionSpider(BasicSpider):
         for i, card in enumerate(cards):
             article_date = card.css("span[class='date']::text").get()
             article_date = dateparser.parse(article_date, languages=['ru']).replace(tzinfo=timezone.utc)
-            if article_date <= cutoff_date: # статья "старше" чем  не будет собрана
+            if article_date >= cutoff_date: # статья "старше" чем  не будет собрана
                 last_article_date = article_date
                 article_link = card.css("a[class='post-link']").attrib.get("href")
                 title = card.css("div[class='news-header'] h3::text").get()
@@ -48,7 +49,7 @@ class SecurityVesionSpider(BasicSpider):
         item['title'] = response.meta['title']
         item['date'] = response.meta['date']
         item['url'] = response.url
-        article_content = [text.strip() for text in response.css("div[class^='ArticleBody_content_']").xpath("string()").getall()]
+        article_content = [html.unescape(text).strip() for text in response.xpath("//div[@class='article-content__col']//p/text()").getall()]
         item['content'] = '\n'.join(article_content)
 
         yield item
