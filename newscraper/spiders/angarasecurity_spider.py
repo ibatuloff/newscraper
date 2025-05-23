@@ -40,4 +40,3 @@ class AngaraSecuritySpider(BasicSpider):
         item['content'] = '\n'.join(article_content)
 
         yield item
-        yield Request(grid_url, callback=self.parse)
