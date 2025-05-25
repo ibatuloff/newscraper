@@ -49,7 +49,7 @@ class SecurityVisionSpider(BasicSpider):
         item['title'] = response.meta['title']
         item['date'] = response.meta['date']
         item['url'] = response.url
-        article_content = [html.unescape(text).strip() for text in response.xpath("//div[@class='article-content__col']//p/text()").getall()]
+        article_content = [html.unescape(text).strip() for text in response.xpath("//div[@class='article-content__col']//p//text()").getall()]
         item['content'] = '\n'.join(article_content)
 
         yield item
