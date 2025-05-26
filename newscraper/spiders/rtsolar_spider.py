@@ -25,7 +25,7 @@ class RTSolarSpider(BasicSpider):
             last_article_date = article_date
             if article_date >= cutoff_date: # статья "старше" чем  не будет собрана
                 article_link = card.css("a[class*='link']").attrib.get("href")
-                title = card.css("p[class='blog-list__title']::text").get()
+                title = card.css("div[class='blog-list__text-wrapper'] p::text").get()
                 yield response.follow(article_link, callback=self.parse_article, meta={
                     "grid_url": response.url,
                     "title": title,
