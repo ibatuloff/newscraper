@@ -98,6 +98,8 @@ requests-file==2.1.0
     # via tldextract
 scrapy==2.13.0
     # via -r requirements.in
+scrapy-user-agents==0.1.1
+    # via -r requirements.in
 service-identity==24.2.0
     # via scrapy
 six==1.17.0
@@ -110,12 +112,16 @@ typing-extensions==4.13.2
     # via
     #   pyopenssl
     #   twisted
-tzdata==2025.2
-    # via tzlocal
 tzlocal==5.3.1
     # via dateparser
+ua-parser==1.0.1
+    # via user-agents
+ua-parser-builtins==0.18.0.post1
+    # via ua-parser
 urllib3==2.4.0
     # via requests
+user-agents==2.2.0
+    # via scrapy-user-agents
 w3lib==2.3.1
     # via
     #   parsel

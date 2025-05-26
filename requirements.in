@@ -2,3 +2,4 @@ scrapy
 dateparser
 psycopg2-binary
 python-dotenv
+scrapy-user-agents
