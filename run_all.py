@@ -5,6 +5,7 @@ from newscraper.spiders.angarasecurity_spider import AngaraSecuritySpider
 from newscraper.spiders.securityvision_spider import SecurityVisionSpider
 from newscraper.spiders.rtsolar_spider import RTSolarSpider
 from newscraper.spiders.infotecs_spider import InfoTecSpider
+from newscraper.spiders.bizone_spider import BizoneSpider
 from dotenv import load_dotenv
 
 load_dotenv("/app/.env")
@@ -15,6 +16,7 @@ process.crawl(AngaraSecuritySpider)
 process.crawl(SecurityVisionSpider)
 process.crawl(RTSolarSpider)
 process.crawl(InfoTecSpider)
+process.crawl(BizoneSpider)
 process.start()
 
 
