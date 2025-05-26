@@ -17,7 +17,7 @@ NEWSPIDER_MODULE = "newscraper.spiders"
 
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
-USER_AGENT = "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:138.0) Gecko/20100101 Firefox/138.0"
+USER_AGENT = None
 
 # Obey robots.txt rules
 ROBOTSTXT_OBEY = True
@@ -53,9 +53,10 @@ DOWNLOAD_DELAY = 3
 
 # Enable or disable downloader middlewares
 # See https://docs.scrapy.org/en/latest/topics/downloader-middleware.html
-#DOWNLOADER_MIDDLEWARES = {
-#    "newscraper.middlewares.NewscraperDownloaderMiddleware": 543,
-#}
+DOWNLOADER_MIDDLEWARES = {
+   "scrapy.downloadermiddlewares.useragent.UserAgentMiddleware": None,
+   "scrapy_user_agents.middlewares.RandomUserAgentMiddleware": 400
+}
 
 # Enable or disable extensions
 # See https://docs.scrapy.org/en/latest/topics/extensions.html
