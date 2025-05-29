@@ -36,7 +36,7 @@ class KasperskySpider(BasicSpider):
         item['title'] = response.meta['title']
         item['date'] = response.meta['date']
         item['url'] = response.url
-        article_content = [text.strip() for text in response.css("div[class^='ArticleBody_content_']").xpath("string()").getall()]
+        article_content = [text.strip() for text in response.xpath("//div[starts_with(@class, 'ArticleBody_content_')]//text()").getall()]
         item['content'] = '\n'.join(article_content)
 
         yield item
